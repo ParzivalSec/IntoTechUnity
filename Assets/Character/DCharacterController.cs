@@ -21,6 +21,8 @@ public class DCharacterController : MonoBehaviour {
 	}
 
 	void UpdateMouseLook() {
+		// The input tags "Mouse X" and "Mouse Y" can be set/changed via the the Unity editor
+		// See: Edit -> Project Settings -> Input [Axes Dropdown]
 		Vector2 DeltaLook = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 		DeltaLook = Vector2.Scale(DeltaLook, new Vector2(Smoothing * Sensitivity, Smoothing * Sensitivity));
 		smoothV.x = Mathf.Lerp (smoothV.x, DeltaLook.x, 1.0F / Smoothing);
@@ -29,7 +31,9 @@ public class DCharacterController : MonoBehaviour {
 		// Apply clamping to look directions/angles
 		mouseLook.y = Mathf.Clamp(mouseLook.y, -90.0F, 90.0F);
 
+		// Use the camera reference to update the camera pitch without tilting the character
 		PlayerCamera.transform.localRotation = Quaternion.AngleAxis (-mouseLook.y, Vector3.right);
+		// For the yaw update the characters rotation
 		transform.localRotation = Quaternion.AngleAxis (mouseLook.x, transform.up);
 	}
 
