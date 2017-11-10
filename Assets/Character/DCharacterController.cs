@@ -17,7 +17,7 @@ public class DCharacterController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	void UpdateMouseLook() {
@@ -56,5 +56,9 @@ public class DCharacterController : MonoBehaviour {
 	void Update () {
 		UpdateMouseLook ();
 		UpdatePosition ();
+
+		if (Input.GetKey (KeyCode.Escape)) {
+			Cursor.lockState = CursorLockMode.None;
+		}
 	}
 }
