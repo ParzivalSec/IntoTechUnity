@@ -42,14 +42,14 @@ public class DCharacterController : MonoBehaviour {
 		// The input tags "Vertical" and "Horizontal" can be set/changed via the the Unity editor
 		// See: Edit -> Project Settings -> Input [Axes Dropdown]
 		float translation = Input.GetAxis("Vertical") * Speed;
-		float strave = Input.GetAxis ("Horizontal") * Speed;
+		float strafe = Input.GetAxis ("Horizontal") * Speed;
 
 		// To allow for movement over time (frames) we have to multiply by DeltaTime
 		translation *= Time.deltaTime;
-		strave *= Time.deltaTime;
+		strafe *= Time.deltaTime;
 
 		// Now apply the movement values for the current frame to the characters translation
-		transform.Translate(strave, 0, translation);
+		transform.Translate(strafe, 0, translation);
 	}
 	
 	// Update is called once per frame
